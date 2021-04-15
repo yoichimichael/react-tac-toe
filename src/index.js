@@ -2,21 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-  render() {
-    return (
-      <button 
-        className="square" 
-        // as a DOM element, attributes naming cannot be customized
-        // this has to be onClick to be a click event handler
-        onClick={() => this.props.onClick()}
-      >
-        {/* Board component passes 'value' props to Square component */}
-        {/* 'this' refers to Board element object */}
-        {this.props.value}
-      </button>
-    );
-  }
+function Square(props) {
+  return (
+    <button 
+      className="square" 
+      // as a DOM element, attributes naming cannot be customized
+      // this has to be onClick to be a click event handler
+      onClick={() => this.props.onClick()}
+    >
+      {/* Board component passes 'value' props to Square component */}
+      {/* 'this' refers to Board element object */}
+      {this.props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
