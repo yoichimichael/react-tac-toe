@@ -7,7 +7,9 @@ class Square extends React.Component {
     return (
       <button 
         className="square" 
-        onClick={this.props.onClick}
+        // as a DOM element, attributes naming cannot be customized
+        // this has to be onClick to be a click event handler
+        onClick={() => this.props.onClick()}
       >
         {/* Board component passes 'value' props to Square component */}
         {/* 'this' refers to Board element object */}
@@ -25,8 +27,11 @@ class Board extends React.Component {
     };
   }
 
-  handleClick() {
-    
+  handleClick(i) {
+    // using slice with no arguments will return a copy (not a reference) of the squares array
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
   }
 
   // pass parameter 'i' as 'value' props to Square component
@@ -34,6 +39,7 @@ class Board extends React.Component {
     return (
       <Square 
         value={this.state.squares[i]}
+        // onClick, as a props, can be called anything, as with the callback function (handleClick)
         onClick={() => this.handleClick(i)}
       />
     );
