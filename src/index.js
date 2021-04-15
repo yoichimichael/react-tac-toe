@@ -8,11 +8,11 @@ function Square(props) {
       className="square" 
       // as a DOM element, attributes naming cannot be customized
       // this has to be onClick to be a click event handler
-      onClick={() => this.props.onClick()}
+      onClick={props.onClick}
     >
       {/* Board component passes 'value' props to Square component */}
       {/* 'this' refers to Board element object */}
-      {this.props.value}
+      {props.value}
     </button>
   );
 }
