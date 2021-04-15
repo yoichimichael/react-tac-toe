@@ -31,6 +31,8 @@ class Board extends React.Component {
     // this approach uses immutability
     // make a copy, modify copy, replace original with the copy
     const squares = this.state.squares.slice();
+    // removes ability to change an already taken square or any square if the game has been won
+    if (calculateWinner(squares) || squares[i]) return;
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
